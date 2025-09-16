@@ -29,7 +29,7 @@ public class Usuario {
     private String apellido;
 
     @Column(nullable = false, unique = true, length = 150)
-    private String email;
+    private String correo;
 
     private String telefono;
 
@@ -73,12 +73,12 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getTelefono() {
