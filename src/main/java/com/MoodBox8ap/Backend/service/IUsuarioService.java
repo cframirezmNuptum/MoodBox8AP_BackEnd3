@@ -9,4 +9,5 @@ public interface IUsuarioService {
     Optional<Usuario> obtenerPorId(Long id);
     Usuario guardarUsuario(Usuario usuario);
     void eliminarUsuario(Long id);
+    Usuario buscarPorCorreo(String correo);
 }

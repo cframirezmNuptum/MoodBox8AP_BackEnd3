@@ -38,4 +38,9 @@ public class UsuarioService implements IUsuarioService {
     public void eliminarUsuario(Long id) {
         usuarioRepository.deleteById(id);
     }
+
+    @Override
+    public Usuario buscarPorCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo);
+    }
 }

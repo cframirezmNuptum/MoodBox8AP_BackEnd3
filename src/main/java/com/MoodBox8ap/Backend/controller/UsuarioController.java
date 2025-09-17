@@ -54,4 +54,25 @@ public class UsuarioController {
         usuarioService.eliminarUsuario(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        // Usa "correo" si tu entidad es correo, o "email" si cambiaste el nombre
+        Usuario usuario = usuarioService.buscarPorCorreo(loginRequest.getCorreo());
+        if (usuario != null && usuario.getPassword().equals(loginRequest.getPassword())) {
+            usuario.setPassword(null); // No envíes la contraseña al frontend
+            return ResponseEntity.ok(usuario);
+        } else {
+            return ResponseEntity.status(401).body("Credenciales incorrectas");
+        }
+    }
+    public static class LoginRequest {
+        private String correo;
+        private String password;
+        // getters y setters
+        public String getCorreo() { return correo; }
+        public void setCorreo(String correo) { this.correo = correo; }
+        public String getPassword() { return password; }
+        public void setPassword(String password) { this.password = password; }
+    }
 }
